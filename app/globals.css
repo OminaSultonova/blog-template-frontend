@@ -5,6 +5,83 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap");
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: "DM Serif Text", serif;
+}
+
+.ql-container {
+  font-size: 16px !important;
+}
+
+.quill > .ql-container . .ql-editor.ql-blank::before {
+  color: #b3b3b1;
+}
+
+.title-input {
+  padding: 5px;
+  font-size: 35px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.img-btn {
+  color: #b3b3b1;
+}
+
+.input::placeholder {
+  color: #b3b3b1;
+}
+
+.publish-btn {
+  margin-top: 40px;
+}
+
+.login-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.login-wrapper {
+  background-color: #fff;
+  padding: 150px 200px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-option {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.image-preview {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.preview-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 602px) {
+  .login-wrapper {
+    padding: 50px 100px;
+  }
 }

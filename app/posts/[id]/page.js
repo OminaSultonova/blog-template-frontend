@@ -1,20 +1,52 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const PostDetails = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // Extracting `id` from the URL query
+  const [post, setPost] = useState(null);
 
-  // Fetch post data based on id
-  // You can use a useEffect hook to fetch data from an API
-  // or directly pass the data if you are using server-side rendering
+  useEffect(() => {
+    if (id) {
+      // Fetch post data based on id from your API or database
+      fetchPost(id);
+    }
+  }, [id]); // Only refetch when `id` changes
+
+  const fetchPost = async (postId) => {
+    try {
+      const res = await fetch(`/api/posts/${postId}`); // Corrected API endpoint
+      if (res.ok) {
+        const postData = await res.json();
+        setPost(postData);
+      } else {
+        const errorData = await res.json();
+        console.error('Failed to fetch post:', errorData);
+      }
+    } catch (error) {
+      console.error('Error fetching post:', error);
+    }
+  };
+
+  if (!post) {
+    return <div>Loading...</div>; // Optional loading indicator
+  }
 
   return (
-    <div className="container mx-auto py-8">
-      <img src="https://via.placeholder.com/200" alt="Post image" className="w-900 h-400 mb-4" />
-      <h1 className="text-3xl font-bold mb-8">Post Title</h1>
-      <p>Post content goes here...</p>
+    <div className="container mx-auto py-8 px-4">
+    <div className="flex flex-col items-center">
+      <img
+        src={post.images[0] || 'https://via.placeholder.com/200'}
+        alt="Post image"
+        className="w-full max-w-2xl h-auto mb-4"
+      />
+      <div className="w-full max-w-2xl text-left">
+        <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      </div>
     </div>
+  </div>
   );
 };
 

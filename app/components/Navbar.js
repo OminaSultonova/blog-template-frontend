@@ -6,10 +6,10 @@ import { MdCreate } from 'react-icons/md';
 
 const Navbar = () => {
   return (
-    <nav className="bg-customBlack p-4 ">
+    <nav className="bg-customBlack p-4">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/">
-          <h2 className="text-white font-dmSerifText text-2xl font-bold logo">Blogify</h2>
+          <h2 className="text-white font-dmSerifText text-3xl font-bold logo">Blogify</h2>
         </Link>
         <div className="flex space-x-4">
           <Link href="/write">

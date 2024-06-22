@@ -1,16 +1,16 @@
 import './globals.css';
-// import AuthSessionProvider from './providers/SessionProvider';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AuthProvider from '@/providers/AuthProvider';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* <AuthSessionProvider> */}
+        <AuthProvider>
           <Navbar />
           {children}
           <Footer />
-        {/* </AuthSessionProvider> */}
+          </AuthProvider>
       </body>
     </html>
   );
